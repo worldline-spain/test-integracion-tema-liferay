@@ -1,0 +1,5 @@
+Bundle-Name: test-integracion-tema
+Bundle-SymbolicName: test.integracion.tema
+Bundle-Version: 1.0.0
+Export-Package: test.integracion.tema.constants
+Web-ContextPath: /test-integracion-tema
