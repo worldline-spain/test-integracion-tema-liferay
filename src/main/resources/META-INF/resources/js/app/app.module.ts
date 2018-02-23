@@ -1,16 +1,50 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
-import { InputTextModule } from 'primeng-wl/primeng';
+import { InputTextModule, ButtonModule, RadioButtonModule, ChartModule, AutoCompleteModule, 
+	CheckboxModule, CardModule, CalendarModule, ChipsModule, ColorPickerModule, DropdownModule, 
+	EditorModule, InputSwitchModule, InputTextareaModule, ListboxModule, InputMaskModule, MultiSelectModule,
+	PasswordModule, RatingModule, SliderModule, SpinnerModule, SelectButtonModule, ToggleButtonModule } from 'primeng-wl/primeng';
+
+import {TriStateCheckboxModule} from 'primeng-wl/tristatecheckbox';
+
 @NgModule({
 	imports: [
 		BrowserModule,
+		// NoopAnimationsModule,
+		// BrowserAnimationsModule,
 		InputTextModule,
+		ButtonModule,
+		RadioButtonModule,
 		FormsModule,
-		CommonModule
+		ChartModule,
+		AutoCompleteModule,
+		CheckboxModule,
+		CardModule,
+		CalendarModule,
+		ChipsModule,
+		ColorPickerModule,
+		DropdownModule,
+		EditorModule,
+		InputSwitchModule,
+		InputTextareaModule,
+		ListboxModule,
+		InputMaskModule,
+		MultiSelectModule,
+		PasswordModule,
+		RatingModule,
+		SliderModule,
+		SpinnerModule,
+		SelectButtonModule,
+		ToggleButtonModule,
+		TriStateCheckboxModule
+
 	],
 	declarations: [AppComponent],
 	entryComponents: [AppComponent],
