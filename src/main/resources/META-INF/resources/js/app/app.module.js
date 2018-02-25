@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "@angular/core", "@angular/platform-browser", "@angular/forms", "./app.component", "primeng-wl/primeng", "primeng-wl/tristatecheckbox"], function (require, exports, core_1, platform_browser_1, forms_1, app_component_1, primeng_1, tristatecheckbox_1) {
+define(["require", "exports", "@angular/core", "@angular/platform-browser", "./animations/src/animations", "@angular/forms", "./app.component", "primeng-wl/primeng", "primeng-wl/tristatecheckbox"], function (require, exports, core_1, platform_browser_1, animations_1, forms_1, app_component_1, primeng_1, tristatecheckbox_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var AppModule = (function () {
@@ -20,8 +20,8 @@ define(["require", "exports", "@angular/core", "@angular/platform-browser", "@an
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                // NoopAnimationsModule,
-                // BrowserAnimationsModule,
+                animations_1.NoopAnimationsModule,
+                animations_1.BrowserAnimationsModule,
                 primeng_1.InputTextModule,
                 primeng_1.ButtonModule,
                 primeng_1.RadioButtonModule,

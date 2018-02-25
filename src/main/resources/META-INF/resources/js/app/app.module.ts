@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ import { NoopAnimationsModule,BrowserAnimationsModule } from './animations/src/animations';
+
 
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -17,8 +17,8 @@ import {TriStateCheckboxModule} from 'primeng-wl/tristatecheckbox';
 @NgModule({
 	imports: [
 		BrowserModule,
-		// NoopAnimationsModule,
-		// BrowserAnimationsModule,
+		 NoopAnimationsModule,
+		 BrowserAnimationsModule,
 		InputTextModule,
 		ButtonModule,
 		RadioButtonModule,
