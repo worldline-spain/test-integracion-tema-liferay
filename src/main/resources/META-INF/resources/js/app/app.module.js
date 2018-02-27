@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "@angular/core", "@angular/platform-browser", "./animations/src/animations", "@angular/forms", "./app.component", "primeng-wl/primeng", "primeng-wl/tristatecheckbox"], function (require, exports, core_1, platform_browser_1, animations_1, forms_1, app_component_1, primeng_1, tristatecheckbox_1) {
+define(["require", "exports", "@angular/core", "@angular/platform-browser", "./animations/src/animations", "@angular/forms", "./app.component", "./splitbutton-routing.module", "primeng-wl/primeng", "primeng-wl/tristatecheckbox", "primeng-wl/splitbutton"], function (require, exports, core_1, platform_browser_1, animations_1, forms_1, app_component_1, splitbutton_routing_module_1, primeng_1, tristatecheckbox_1, splitbutton_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var AppModule = (function () {
@@ -19,6 +19,7 @@ define(["require", "exports", "@angular/core", "@angular/platform-browser", "./a
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
+                splitbutton_routing_module_1.SplitButtonRoutingModule,
                 platform_browser_1.BrowserModule,
                 animations_1.NoopAnimationsModule,
                 animations_1.BrowserAnimationsModule,
@@ -46,7 +47,10 @@ define(["require", "exports", "@angular/core", "@angular/platform-browser", "./a
                 primeng_1.SpinnerModule,
                 primeng_1.SelectButtonModule,
                 primeng_1.ToggleButtonModule,
-                tristatecheckbox_1.TriStateCheckboxModule
+                tristatecheckbox_1.TriStateCheckboxModule,
+                primeng_1.MessagesModule,
+                primeng_1.MessageModule,
+                splitbutton_1.SplitButtonModule
             ],
             declarations: [app_component_1.AppComponent],
             entryComponents: [app_component_1.AppComponent],

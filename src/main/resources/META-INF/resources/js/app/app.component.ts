@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng-wl/primeng';
+//import { MenuItem } from 'primeng-wl/components/common/menuitem';
+import { MenuItem } from 'primeng-wl/components/common/api';
+import { Message } from 'primeng-wl/components/common/api';
+import { Router } from '@angular/router';
 
-interface City {
+interface City { 
     name: string,
     code: string
 } 
@@ -10,7 +14,7 @@ interface City {
 	selector: 'app',
 	templateUrl: '/o/test-integracion-tema/js/app/app.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{  
        
 
 	countries: string[] = ['Albania','Alemania','Andorra','Armenia','Austria','Azerbaiyán','Bélgica','Bielorrusia','Bosnia y Herzegovina',
@@ -54,7 +58,16 @@ export class AppComponent {
     types: SelectItem[];
     selectedType: string;
 
-    constructor() {
+    clicks: number = 0;
+
+    items: MenuItem[];
+
+    msgs: Message[] = [];
+
+    constructor(private router: Router) {
+
+        router.navigate(['home'], { skipLocationChange: true })
+
         console.log("constructor");
 
         this.cities = [
@@ -85,9 +98,23 @@ export class AppComponent {
         ];
     }
 
+    ngOnInit() {
+        this.items = [
+            {label: 'Update', icon: 'fa-refresh', command: () => {
+                this.update();
+            }},
+            {label: 'Delete', icon: 'fa-close', command: () => {
+                this.delete();
+            }},
+            {label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io'},
+            {label: 'Theming', icon: 'fa-paint-brush', routerLink: ['/theming']}
+        ];
+    }
+
     clear() {
         this.selectedType = null;      
     }
+
 
 	filterCountries(event:any) {
 		//console.log("filtercountries method");
@@ -110,6 +137,25 @@ export class AppComponent {
             }
         }
 	}
-	
+    
+    count() {
+        this.clicks++;
+    }
+ 
+   
+    save() {
+        this.msgs = [];
+        this.msgs.push({severity:'success', summary:'Success', detail:'Data Saved'});
+    }
+    
+    update() {
+        this.msgs = [];
+        this.msgs.push({severity:'warning', summary:'Success', detail:'Data Updated'});
+    }
+    
+    delete() {
+        this.msgs = [];
+        this.msgs.push({severity:'danger', summary:'Success', detail:'Data Deleted'});
+    }
 }
 

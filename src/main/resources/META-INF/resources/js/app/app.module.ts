@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
- import { NoopAnimationsModule,BrowserAnimationsModule } from './animations/src/animations';
-
+import { NoopAnimationsModule,BrowserAnimationsModule } from './animations/src/animations';
 
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { SplitButtonRoutingModule } from './splitbutton-routing.module';
 
 import { InputTextModule, ButtonModule, RadioButtonModule, ChartModule, AutoCompleteModule, 
 	CheckboxModule, CardModule, CalendarModule, ChipsModule, ColorPickerModule, DropdownModule, 
 	EditorModule, InputSwitchModule, InputTextareaModule, ListboxModule, InputMaskModule, MultiSelectModule,
-	PasswordModule, RatingModule, SliderModule, SpinnerModule, SelectButtonModule, ToggleButtonModule } from 'primeng-wl/primeng';
+	PasswordModule, RatingModule, SliderModule, SpinnerModule, SelectButtonModule, ToggleButtonModule,
+	MessagesModule, MessageModule } from 'primeng-wl/primeng';
 
 import {TriStateCheckboxModule} from 'primeng-wl/tristatecheckbox';
+import {SplitButtonModule} from 'primeng-wl/splitbutton';
 
 @NgModule({
-	imports: [
+	imports: [		
+		SplitButtonRoutingModule,
 		BrowserModule,
 		 NoopAnimationsModule,
 		 BrowserAnimationsModule,
@@ -43,8 +46,12 @@ import {TriStateCheckboxModule} from 'primeng-wl/tristatecheckbox';
 		SpinnerModule,
 		SelectButtonModule,
 		ToggleButtonModule,
-		TriStateCheckboxModule
-
+		TriStateCheckboxModule,
+		MessagesModule, 
+		MessageModule,
+		SplitButtonModule
+				
+		
 	],
 	declarations: [AppComponent],
 	entryComponents: [AppComponent],

@@ -7,11 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "@angular/core"], function (require, exports, core_1) {
+define(["require", "exports", "@angular/core", "@angular/router"], function (require, exports, core_1, router_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var AppComponent = (function () {
-        function AppComponent() {
+        function AppComponent(router) {
+            this.router = router;
             this.countries = ['Albania', 'Alemania', 'Andorra', 'Armenia', 'Austria', 'Azerbaiyán', 'Bélgica', 'Bielorrusia', 'Bosnia y Herzegovina',
                 'Bulgaria', 'Chipre', 'Ciudad del Vaticano', 'Croacia', 'Dinamarca', 'Eslovaquia', 'Eslovenia', 'España', 'Estonia',
                 'Finlandia', 'Francia', 'Georgia', 'Grecia', 'Hungría', 'Irlanda', 'Islandia', 'Italia', 'Kazajistán', 'Letonia', 'Liechtenstein',
@@ -25,6 +26,9 @@ define(["require", "exports", "@angular/core"], function (require, exports, core
             this.checked1 = false;
             this.checked2 = false;
             this.selectedCars1 = [];
+            this.clicks = 0;
+            this.msgs = [];
+            router.navigate(['home'], { skipLocationChange: true });
             console.log("constructor");
             this.cities = [
                 { name: 'New York', code: 'NY' },
@@ -51,6 +55,19 @@ define(["require", "exports", "@angular/core"], function (require, exports, core
                 { label: 'MasterCard', value: 'MasterCard', icon: 'fa fa-fw fa-cc-mastercard' }
             ];
         }
+        AppComponent.prototype.ngOnInit = function () {
+            var _this = this;
+            this.items = [
+                { label: 'Update', icon: 'fa-refresh', command: function () {
+                        _this.update();
+                    } },
+                { label: 'Delete', icon: 'fa-close', command: function () {
+                        _this.delete();
+                    } },
+                { label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io' },
+                { label: 'Theming', icon: 'fa-paint-brush', routerLink: ['/theming'] }
+            ];
+        };
         AppComponent.prototype.clear = function () {
             this.selectedType = null;
         };
@@ -74,6 +91,21 @@ define(["require", "exports", "@angular/core"], function (require, exports, core
                 }
             }
         };
+        AppComponent.prototype.count = function () {
+            this.clicks++;
+        };
+        AppComponent.prototype.save = function () {
+            this.msgs = [];
+            this.msgs.push({ severity: 'success', summary: 'Success', detail: 'Data Saved' });
+        };
+        AppComponent.prototype.update = function () {
+            this.msgs = [];
+            this.msgs.push({ severity: 'warning', summary: 'Success', detail: 'Data Updated' });
+        };
+        AppComponent.prototype.delete = function () {
+            this.msgs = [];
+            this.msgs.push({ severity: 'danger', summary: 'Success', detail: 'Data Deleted' });
+        };
         return AppComponent;
     }());
     AppComponent = __decorate([
@@ -81,7 +113,7 @@ define(["require", "exports", "@angular/core"], function (require, exports, core
             selector: 'app',
             templateUrl: '/o/test-integracion-tema/js/app/app.html'
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [router_1.Router])
     ], AppComponent);
     exports.AppComponent = AppComponent;
 });
