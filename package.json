@@ -35,8 +35,16 @@
 		"@types/node": "8.0.31",
 		"babel-cli": "^6.26.0",
 		"babel-preset-liferay-amd": "1.2.2",
+		"browser-sync": "^2.23.6",
 		"canonical-path": "0.0.2",
 		"concurrently": "3.5.0",
+		"deamdify": "^0.3.0",
+		"gulp": "^3.9.1",
+		"gulp-browserify": "^0.5.1",
+		"gulp-concat": "^2.6.1",
+		"gulp-file": "^0.4.0",
+		"gulp-sourcemaps": "^2.6.4",
+		"gulp-typescript": "^4.0.1",
 		"http-server": "0.10.0",
 		"jasmine": "2.6.0",
 		"jasmine-core": "2.6.4",
@@ -59,7 +67,8 @@
 	"main": "js/angular-loader.js",
 	"name": "test-integracion-tema",
 	"scripts": {
-		"build": "tsc && babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
+		"build": "tsc && babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler",
+		"serve": "gulp serve"
 	},
 	"version": "1.0.0"
 }
