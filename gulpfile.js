@@ -1,73 +1,39 @@
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var gulp = require('gulp');
-var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
 var file = require('gulp-file');
 var sourcemaps = require('gulp-sourcemaps');
 var ts = require('gulp-typescript');
+var webpack = require('webpack');
+var gulpWebpack = require('webpack-stream');
 
 var package = require('./package.json');
 var MODULE_ID = package.name; // 'test-integracion-tema'
 
 gulp.task('compile', function () {
-  var tsProject = ts.createProject('tsconfig.json', {
-    outFile: 'app.bundle.js'
-  });
-  var tsResult = tsProject.src()
-    .pipe(sourcemaps.init())
-    .pipe(tsProject())
-    .pipe(browserify({
-      insertGlobals: true,
-      debug: false,
-      transform: ['deamdify'],
-      paths: ['node_modules'],
-    }))
+  gulp.src('/src/main/resources/META-INF/resources/js/polyfills.ts')
+    .pipe(gulpWebpack(require('./webpack.config.js'), webpack))
     .pipe(file('index.html', `
       <html>
-        <head></head>
+        <head>
+          <base href="/">
+          <link rel="stylesheet" type="text/css" href="app.css" />
+        </head>
         <body>
-          HOLA
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
-          <!-- <script src="vendor.bundle.js"></script> -->
-          <script src="app.bundle.js"></script>
-
-          <script>
-            // console.log('Manually bootstrapping AppComponent');
-            require(['main'], function (main) {
-              console.log('Main');
-              main('_dummyId');
-            });
-          </script>
+          <demo-app></demo-app>
+          <script src="polyfills.js"></script>
+          <script src="app.js"></script>
         </body>
       </html>
     `))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest('www/'));
 });
 
-gulp.task('browserify', function () {
-  gulp.src([
-      'www/app.bundle.js'
-      // 'www/**/*.js',
-      // 'node_modules/**/*.js',
-      // '!node_modules/@types'
-    ])
-    .pipe(browserify({
-      insertGlobals: true,
-      debug: false,
-      paths: ['node_modules'],
-      // ignore: ['node_modules/@types', 'build']
-    }))
-    .pipe(concat('vendor.bundle.js'))
-    .pipe(gulp.dest('www/'));
-});
 
 // Build: generate sources
 gulp.task('build', ['scripts', 'assets'], function () {});
-gulp.task('scripts', ['compile'], function () {
-  // gulp.start('browserify');
-});
+gulp.task('scripts', ['compile'], function () {});
 gulp.task('assets', function () {
   gulp.src('src/main/resources/META-INF/resources/js/**/*.html')
     .pipe(gulp.dest('www/'));
