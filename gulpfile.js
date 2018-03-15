@@ -13,7 +13,7 @@ var MODULE_ID = package.name; // 'test-integracion-tema'
 
 gulp.task('compile', function () {
   gulp.src('/src/main/resources/META-INF/resources/js/polyfills.ts')
-    .pipe(gulpWebpack(require('./webpack.config.js'), webpack))
+    .pipe(gulpWebpack(require('./webpack.config.js'), webpack, browserSync.reload))
     .pipe(file('index.html', `
       <html>
         <head>
@@ -52,7 +52,10 @@ gulp.task('clean', function () {
 // Watch for file changes and build them
 gulp.task('watch', function () {
   gulp.watch('src/**/*.{html,ts}', ['build'])
-  gulp.watch("www/**/*.{css,html,js}").on('change', browserSync.reload);
+
+  // DO NOT reload browser here... it reloads many times. Wait for webpack to finish
+  // See gulpWebpack call in 'compile' task
+  // gulp.watch("www/**/*.{css,html,js}").on('change', browserSync.reload);
 });
 
 // Serve
