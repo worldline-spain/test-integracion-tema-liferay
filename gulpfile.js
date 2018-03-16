@@ -1,10 +1,7 @@
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var gulp = require('gulp');
-var concat = require('gulp-concat');
 var file = require('gulp-file');
-var sourcemaps = require('gulp-sourcemaps');
-var ts = require('gulp-typescript');
 var webpack = require('webpack');
 var gulpWebpack = require('webpack-stream');
 
